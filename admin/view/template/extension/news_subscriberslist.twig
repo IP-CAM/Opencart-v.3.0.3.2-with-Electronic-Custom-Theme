@@ -1,0 +1,32 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title"><i class="fa fa-shopping-cart"></i> {{ heading_title }}</h3>
+  </div>
+  <div class="table-responsive">
+ <table class="table table-bordered table-hover">
+        <thead>
+          <tr>
+            
+            <td class="text-left">{{ column_email }}</td>
+            <td class="text-right">{{ column_action }}</td>
+          </tr>
+        </thead>
+        <tbody>
+		  {% if emails %}
+	      {% for email in emails %}
+          <tr>
+           
+            <td class="text-left">{{ email.email }}</td>
+            <td class="text-right"><a href="{{ email.edit }}" data-toggle="tooltip" title="{{ button_edit }}" class="btn btn-primary"><i class="fa fa-eye"></i></a></td>
+          </tr>
+           {% endfor %}
+		  {% else %}
+          <tr>
+            <td class="text-center" colspan="4">{{ text_no_results }}</td>
+          </tr>
+          {% endif %}
+        </tbody>
+      </table>
+  </div>
+</div>
+

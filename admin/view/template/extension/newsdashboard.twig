@@ -1,0 +1,132 @@
+{{ header }}{{ column_left }}
+<div id="content">
+  <div class="page-header">
+    <div class="container-fluid">
+      
+      <ul class="breadcrumb">
+        {% for breadcrumb in breadcrumbs %}
+        <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+  <div class="container-fluid">
+    {% if error_install %}
+    <div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i> {{ error_install }}
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+    </div>
+    {% endif %}
+	<div class="row">
+	<div class="logopart">
+      <div class="col-lg-5 col-md-5 col-sm-5">
+		<h1>{{ heading_title }}</h1>
+	  </div>
+      <div class="col-lg-7 col-md-7 col-sm-7">
+		{{ dashmenu }}
+	  </div>
+    </div>
+    </div>
+	
+    <div class="row">
+      <div class="col-lg-6 col-md-6 col-sm-6">{{ subscribers }}</div>
+     
+      <div class="col-lg-6 col-md-6 col-sm-6">{{ unsubscribers }}</div>
+      <div class="col-lg-12 col-md-12 col-sm-12 form-group tepmlate">
+		<div class="col-sm-6">
+		</div>
+		<div class="col-sm-3">
+			<select class="form-control" name="templatename">
+				<option value="">{{ text_select }}</option>
+				{% for template in templatelist %}
+				<option value="{{ template.newstemplate_id }}">{{ template.name }}</option>
+				{% endfor %}
+			</select>
+		</div>
+		<div class="col-sm-3" style="padding-right:0px">			
+			<input type="button" value="{{ text_send }}" id="send-email" class="btn btn-primary btn-block emailtepm">
+		</div>
+	  </div>
+    </div>
+    <div class="row subscriblist">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"> {{ subscriblist }} </div>
+    </div>
+  </div>
+</div>
+<script>
+$('#send-email').bind('click', function() {
+	$.ajax({
+	url: 'index.php?route=extension/newsdashboard/sendtemplatemail&user_token={{ user_token }}',
+	type: 'post',
+	data: $('.tepmlate select[name=\'templatename\']'),
+	dataType: 'json',
+	beforeSend: function() {
+			$('.emailtepm').button('loading');
+			},
+			complete: function() {
+			$('.emailtepm').button('reset');
+			},
+	success: function(json) {
+	$('.success, .warning, .attention, information, .alert').remove();
+		
+		if (json['error']) {
+			$('.subscriblist').before('<div class="alert alert-danger">' + json['error'] + '</div>');				
+				$('.warning').fadeIn('slow');
+		}
+		
+			
+			if (json['next']) {
+				if (json['success']) {
+					$('.subscriblist').prepend('<div class="alert alert-success"><i class="fa fa-check-circle"></i>  ' + json['success'] + '</div>');
+					
+					send(json['next']);
+				}		
+			} else {
+				if (json['success']) {
+					$('.subscriblist').prepend('<div class="alert alert-success"><i class="fa fa-check-circle"></i> ' + json['success'] + '</div>');
+				}					
+			}				
+		}
+		
+	});
+});
+
+function send(url) {
+	
+	$.ajax({
+	url: url,
+	type: 'post',
+	data: $('.tepmlate select[name=\'templatename\']'),
+	dataType: 'json',
+		beforeSend: function() {
+			$('#button-send').button('loading');	
+		},
+		complete: function() {
+			$('#button-send').button('reset');
+		},				
+		success: function(json) {
+			$('.success, .warning, .attention, information, .alert').remove();
+		
+		if (json['error']) {
+			$('.subscriblist').before('<div class="alert alert-danger">' + json['error'] + '</div>');				
+				$('.warning').fadeIn('slow');
+		}
+		
+			
+			if (json['next']) {
+				if (json['success']) {
+					$('.subscriblist').prepend('<div class="alert alert-success"><i class="fa fa-check-circle"></i>  ' + json['success'] + '</div>');
+					
+					send(json['next']);
+				}		
+			} else {
+				if (json['success']) {
+					$('.subscriblist').prepend('<div class="alert alert-success"><i class="fa fa-check-circle"></i> ' + json['success'] + '</div>');
+				}					
+			}				
+		}
+	});
+}
+
+
+</script>
+{{ footer }}

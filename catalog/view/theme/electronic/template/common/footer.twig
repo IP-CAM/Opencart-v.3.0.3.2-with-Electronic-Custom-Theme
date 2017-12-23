@@ -1,0 +1,78 @@
+{{ column_footer }}
+</div>
+<footer>
+  <div class="container" id="footer">
+    <div class="row">
+      {% if informations %}
+      <div class="col-sm-3">
+        <h5>{{ text_information }}</h5>
+        <ul class="list-unstyled">
+         {% for information in informations %}
+          <li><i class="fa fa-angle-right"></i><a href="{{ information.href }}">{{ information.title }}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+      {% endif %}
+      <div class="col-sm-3">
+        <h5>{{ text_service }}</h5>
+        <ul class="list-unstyled">
+          <li><i class="fa fa-angle-right"></i><a href="{{ contact }}">{{ text_contact }}</a></li>
+          <li><i class="fa fa-angle-right"></i><a href="{{ return }}">{{ text_return }}</a></li>
+          <li><i class="fa fa-angle-right"></i><a href="{{ sitemap }}">{{ text_sitemap }}</a></li>
+        </ul>
+      </div>
+      <div class="col-sm-3">
+        <h5>{{ text_extra }}</h5>
+        <ul class="list-unstyled">
+          <li><i class="fa fa-angle-right"></i><a href="{{ manufacturer }}">{{ text_manufacturer }}</a></li>
+          <li><i class="fa fa-angle-right"></i><a href="{{ voucher }}">{{ text_voucher }}</a></li>
+          <li><i class="fa fa-angle-right"></i><a href="{{ affiliate }}">{{ text_affiliate }}</a></li>
+          <li><i class="fa fa-angle-right"></i><a href="{{ special }}">{{ text_special }}</a></li>
+        </ul>
+      </div>
+      <div class="col-sm-3">
+        <div id="social_media">
+			<div class="links1">
+				<div class="address">
+					<h5>{{ title }}</h5>
+					<ul>
+						{% if address2 %}
+						<li class="address">{{ address2 }}</li>
+						{% endif %}
+						{% if mobile %}
+						<li class="phone">{{ mobile }}</li>
+						{% endif %}
+						{% if email %}
+						<li class="mail"><a href="{{ email }}">{{ email }}</a></li>
+						{% endif %}
+					</ul>	
+				</div>
+			</div>
+		</div>	
+      </div>
+    </div>
+  </div>
+</footer>
+<div class="powered">
+	<div class="container">
+		<p>{{ powered }}</p>
+	</div>
+</div>
+{% for script in scripts %}
+<script src="{{ script }}" type="text/javascript"></script>
+{% endfor %}
+<style>
+	
+	#social_media{margin:0px;}
+	#social_media .links1{float:left;}
+	#social_media .links1 h1{font-size:18px; font-family:Trebuchet MS; color:#01aeef; font-weight:normal;}
+	#social_media .address ul{float:left;list-style:none; padding:0px;}
+	#social_media .address ul li{float:left;width:100%; background:url("catalog/view/theme/default/image/contact-us.png") no-repeat scroll 0 4px rgba(0, 0, 0, 0); color:#fff;font-family: "Roboto-Condensed";
+    font-size: 16px;padding:3px 0px 3px 20px; line-height:29px;}
+	#social_media .address .phone{ background-position:0 -40px}
+	#social_media .address .mail{ background-position:0 -81px; word-break:break-all;}
+	#social_media .address .mail a{color:#fff;text-decoration:none; font-size: 16px; font-family: "Roboto-Condensed";}
+	#social_media .address .mail a:hover{text-decoration:underline;}
+	#social_media .address .address{background-position:0 13px}
+</style>
+</body></html>

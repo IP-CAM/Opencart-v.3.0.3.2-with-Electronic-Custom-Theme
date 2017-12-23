@@ -1,0 +1,22 @@
+<link type="text/css" href="view/stylesheet/newsmenu.css" rel="stylesheet" media="screen" />
+<ul id="dashmenu" class="list-inline">
+			<li class="yellow {% if dashboard_menu==1 %} active {% endif %}"><a href="{{ dashboard }}"><i class="fa fa-dashboard"></i> 
+			<div>{{ text_dash }}</div></a></li>
+			<li class="green{% if newsletter_menu==1 %} active {% endif %}"><a  href="{{ newsletter }}"><i class="fa fa-envelope-o" aria-hidden="true"></i>
+
+			<div>{{ text_newsletter }}</div></a></li>
+			<li class="orange{% if template_menu==1 %} active {% endif %}"><a  href="{{ template }}"><i class="fa fa-link"></i>
+			<div>{{ text_tempalte }}</div></a></li>
+			<li class="darkpink{% if module_menu==1 %} active {% endif %}"><a href="{{ addmodule }}"><i class="fa fa-puzzle-piece"></i> 
+			<div>{{ text_addmodule }}</div></a></li>
+			
+		</ul>
+<script>
+$("#dashmenu").on('click','li',function(){
+    $("#dashmenu li.active").removeClass("active"); 
+    $(this).addClass("active"); 
+});
+</script>
+
+
+

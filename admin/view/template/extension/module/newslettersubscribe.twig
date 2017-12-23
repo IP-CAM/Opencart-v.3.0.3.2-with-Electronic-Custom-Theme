@@ -1,0 +1,228 @@
+{{ header }}{{ column_left }}
+<div id="content">
+  <div class="page-header">
+    <div class="container-fluid">
+      <div class="pull-right">
+        <button type="submit" form="form-news" data-toggle="tooltip" title="{{ button_save }}" class="btn btn-primary"><i class="fa fa-save"></i></button>
+        <a href="{{ cancel }}" data-toggle="tooltip" title="{{ button_cancel }}" class="btn btn-default"><i class="fa fa-reply"></i></a></div>
+      <h1>{{ heading_title }}</h1>
+      <ul class="breadcrumb">
+        {% for breadcrumb in breadcrumbs %}
+        <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+<div class="container-fluid">
+ {% if error_warning %}
+    <div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i> {{ error_warning }}
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+    </div>
+    {% endif %}
+  <div class="panel panel-default">
+	<div class="panel-heading">
+       <h3 class="panel-title"><i class="fa fa-pencil"></i> {{ text_edit }}</h3>
+    </div>
+	<div class="panel-body">
+    <form action="{{ action }}" method="post" enctype="multipart/form-data" id="form-news" class="form-horizontal">
+			<ul class="nav nav-tabs">
+				<li class="active"><a href="#tab-general" data-toggle="tab">{{ tab_general }}</a></li>
+				<li><a href="#tab-data" data-toggle="tab">{{ tab_data }}</a></li>
+			</ul>
+			<div class="tab-content">
+				 <div class="tab-pane active in" id="tab-general">
+						<div class="form-group">
+							<label class="col-sm-2 control-label" for="input-name">{{ entry_name }}<span data-toggle="tooltip" title="{{ help_name }}"> 
+									</span></label>
+								<div class="col-sm-10">
+									<input type="text" name="name" value="{{ name }}" placeholder="{{ entry_name }}" id="input-name" class="form-control" />
+									{% if error_name %}
+                                   <div class="text-danger">{{ error_name }}</div>
+                                   {% endif %}
+								</div>
+						</div>
+						<div class="form-group">
+										<label class="col-sm-2 control-label" for="input-text">{{ entry_text }}<span data-toggle="tooltip" title="{{ help_text }}"> 
+									</span></label>
+										<div class="col-sm-10">
+											<input type="text" name="newslatertext" value="{{ newslatertext }}" placeholder="{{ entry_text }}" id="input-text" class="form-control" />
+										</div>
+							</div>
+						<div class="form-group">
+								<label class="col-sm-2 control-label" for="input-unsubscribe">{{ entry_unsubscribe }}<span data-toggle="tooltip" title="{{ help_unsubscribe }}"> 
+									</span></label>
+								<div class="col-sm-10">
+									<select name="option_unsubscribe" class="form-control">
+										{% if option_unsubscribe %}
+										<option value="1" selected="selected">{{ text_enabled }}</option>
+                                        <option value="0">{{ text_disabled }}</option>
+                                        {% else %}
+                                        <option value="1">{{ text_enabled }}</option>
+                                        <option value="0" selected="selected">{{ text_disabled }}</option>
+                                        {% endif %}
+								 </select>
+								</div>
+						 </div>
+						 <div class="form-group">
+								<label class="col-sm-2 control-label" for="input-unsubscribe">{{ entry_mail }}</label>
+								<div class="col-sm-10">
+								 <select name="newslettersubscribe_mail_status" class="form-control">
+									{% if newslettersubscribe_mail_status %}
+									<option value="1" selected="selected">{{ text_enabled }}</option>
+                                        <option value="0">{{ text_disabled }}</option>
+                                        {% else %}
+                                        <option value="1">{{ text_enabled }}</option>
+                                        <option value="0" selected="selected">{{ text_disabled }}</option>
+                                        {% endif %}
+								 </select>
+								</div>
+						 </div>
+					 <!-- <div class="form-group">
+						<label class="col-sm-2 control-label" for="input-unsubscribe">{{ entry_popup }}</label>
+						<div class="col-sm-10">
+						 <select name="newslettersubscribe_thickbox" class="form-control">
+							 {% if newslettersubscribe_thickbox %}
+								<option value="1" selected="selected">{{ text_enabled }}</option>
+                                        <option value="0">{{ text_disabled }}</option>
+                                        {% else %}
+                                        <option value="1">{{ text_enabled }}</option>
+                                        <option value="0" selected="selected">{{ text_disabled }}</option>
+                                        {% endif %}
+						 </select>
+						</div>
+					 </div>-->
+	   
+					 <div class="form-group">
+							<label class="col-sm-2 control-label" for="input-unsubscribe">{{ entry_popup }}<span data-toggle="tooltip" title="{{ help_popup }}"> 
+									</span></label>
+							<div class="col-sm-10">
+							 <select name="newslettersubscribe_popup" class="form-control">
+								 {% if newslettersubscribe_popup %}
+									<option value="1" selected="selected">{{ text_enabled }}</option>
+                                        <option value="0">{{ text_disabled }}</option>
+                                        {% else %}
+                                        <option value="1">{{ text_enabled }}</option>
+                                        <option value="0" selected="selected">{{ text_disabled }}</option>
+                                        {% endif %}
+							 </select>
+							</div>
+					 </div>
+					<div class="form-group">
+							<label class="col-sm-2 control-label" for="input-unsubscribe">{{ entry_registered }}</label>
+							<div class="col-sm-10">
+							 <select name="newslettersubscribe_registered" class="form-control">
+								 {% if newslettersubscribe_registered %}
+									<option value="1" selected="selected">{{ text_enabled }}</option>
+                                        <option value="0">{{ text_disabled }}</option>
+                                        {% else %}
+                                        <option value="1">{{ text_enabled }}</option>
+                                        <option value="0" selected="selected">{{ text_disabled }}</option>
+                                        {% endif %}
+							 </select>
+							</div>
+					</div>
+	  
+				
+					<div class="form-group">
+							<label class="col-sm-2 control-label" for="input-unsubscribe">{{ entry_status }}<span data-toggle="tooltip" title="{{ help_status }}"> 
+									</span></label>
+								<div class="col-sm-10">
+									 <select name="status" class="form-control">
+										{% if newslettersubscribe_status %}
+										<option value="1" selected="selected">{{ text_enabled }}</option>
+                                        <option value="0">{{ text_disabled }}</option>
+                                        {% else %}
+                                        <option value="1">{{ text_enabled }}</option>
+                                         <option value="0" selected="selected">{{ text_disabled }}</option>
+                                         {% endif %}
+									 </select>
+								</div>
+						 </div>
+					</div>
+					
+					<div class="tab-pane" id="tab-data">						
+						<div class="form-group">
+							<label class="col-sm-2 control-label" for="input-text_color">{{ entry_text_color }}<span data-toggle="tooltip" title="{{ help_text_color }} ">
+							</span></label>
+							<div class="col-sm-4">
+								<div class="input-group demo2">
+									<input type="text" name="newstext_color" value="{{ newstext_color }}" placeholder="{{ entry_text_color }}" id="input-text_color"  class="form-control " />
+									<span class="input-group-addon"><i></i></span>
+								</div>
+							</div>
+						 </div>
+						 <div class="form-group">
+							<label class="col-sm-2 control-label" for="input-text_color1">{{ entry_text_color1 }}<span data-toggle="tooltip" title="{{ help_text_color1 }}"> 
+							</span></label>
+							<div class="col-sm-4">
+								<div class="input-group demo2">
+									<input type="text" name="newstextnopop_color" value="{{ newstextnopop_color }}" placeholder="{{ entry_text_color1 }}" id="input-text_color1"  class="form-control " />
+									<span class="input-group-addon"><i></i></span>
+								</div>
+							</div>
+						 </div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label" for="input-bgtop">{{ entry_bgtop_color }}<span data-toggle="tooltip" title="{{ help_bgtop }}"> 
+							</span></label>
+							<div class="col-sm-4">
+									<div class="input-group demo2">
+											<input type="text" name="pupbutoncolor" value="{{ pupbutoncolor }}" placeholder="{{ entry_bgtop_color }}" id="input-bgtop" class="form-control" />
+											<span class="input-group-addon"><i></i></span>
+									</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label" for="input-bgbottom">{{ entry_bgbottom_color }}<span data-toggle="tooltip" title="{{ help_bgbottom }}"> 
+							</span></label>
+							<div class="col-sm-4">
+								<div class="input-group demo2">
+									<input type="text" name="butontextcolor" value="{{ butontextcolor }}" placeholder="{{ entry_bgbottom_color }}" id="input-bgbottom" class="form-control" />
+									<span class="input-group-addon"><i></i></span>
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+									<label class="col-sm-2 control-label" for="input-border">{{ entry_border_color }}<span data-toggle="tooltip" title="{{ help_border }}"> 
+									</span></label>
+									<div class="col-sm-4">
+										<div class="input-group demo2">
+											<input type="text" name="buttonbg" value="{{ buttonbg }}" placeholder="{{ entry_border_color }}" id="input-border" class="form-control" />
+											<span class="input-group-addon"><i></i></span>
+										</div>
+									</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label" for="input-hover">{{ entry_hover_color }}<span data-toggle="tooltip" title="{{ help_hover }}"> 
+							</span></label>
+							<div class="col-sm-4">
+								<div class="input-group demo2">
+										<input type="text" name="newsbutonhover" value="{{ newsbutonhover }}" placeholder="{{ entry_hover_color }}" id="input-hover" class="form-control" />
+										<span class="input-group-addon"><i></i></span>
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label" for="input-container">{{ entry_container_color }}<span data-toggle="tooltip" title="{{ help_container }}"> 
+							</span></label>
+							<div class="col-sm-4">
+								<div class="input-group demo2">
+										<input type="text" name="containerbg" value="{{ containerbg }}" placeholder="{{ entry_container_color }}" id="input-container" class="form-control" />
+										<span class="input-group-addon"><i></i></span>
+								</div>
+							</div>
+						</div>
+				</div>
+			</div>
+			</form>
+	</div>
+  </div>
+</div>
+<link href="view/javascript/colorpicker/css/bootstrap-colorpicker.min.css" rel="stylesheet">
+<link href="view/javascript/colorpicker/css/docs.css" rel="stylesheet">
+<script src="view/javascript/colorpicker/js/bootstrap-colorpicker.js"></script>
+<script src="view/javascript/colorpicker/js/docs.js"></script>
+<script>
+$(function(){
+    $('.demo2').colorpicker();
+});
+</script>

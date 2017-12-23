@@ -1,0 +1,27 @@
+<h3>{{ heading_title }}</h3>
+<hr class="hrleft"></hr>
+<div class="row" id="featuredleft">
+  {% for product in products %}
+  <div class="product-layout col-lg-3 col-md-3 col-sm-6 col-xs-12">
+    <div class="product-thumb transition">
+      <div class="image pull-left"><a href="{{ product.href }}"><img src="{{ product.thumb }}" alt="{{ product.name }}" title="{{ product.name }}" class="img-responsive" /></a>
+			</div>
+      <div class="caption">
+        <h4><a href="{{ product.href }}">{{ product.name }}</a></h4>
+        {% if product.price %}
+        <p class="price">
+          {% if not product.special %}
+			{{ product.price }}
+         {% else %}
+          <span class="price-new">{{ product.special }}</span> <span class="price-old">{{ product.price }}</span>
+         {% endif %}
+        </p>
+        {% endif %}
+      </div>
+      <div class="button-group1">
+        <button  type="button" onclick="cart.add('{{ product.product_id }}');"><span>{{ button_cart }}</span></button>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>

@@ -1,0 +1,162 @@
+/*newletter*/
+#newsletter{
+background:#353535;
+}
+#newsletter .news {
+    color: #fff;
+    float: left;
+    font-size: 17px;
+    margin-top: 5px;
+    padding-right: 13px;
+	padding-left:0px;
+    text-transform: uppercase;
+}
+#newsletter #frm_subscribe .newsbox{
+float:left;
+display:inline-block;
+}
+#newsletter #subscribe{
+    padding: 0px 0px;
+}
+#subscribe div + div {margin-left:5px;}
+#newsletter	#subscribe .form-control{
+width:100%; background:#fff; border-radius:0px; border:1px solid #FFF;
+box-shadow:none;height:36px;
+}
+#newsletter #subscribe .btn-news{
+box-shadow:none;
+	color: #fff;
+	text-shadow: none;
+	background-color: #131313;
+	border-color:#131313;
+	border-radius: 0px;
+	text-transform:uppercase;
+	font-family: "Roboto-Condensed";  
+	font-size:14px;
+	padding:7px 10px;
+	display:inline-block;
+}
+#newsletter #subscribe .btn-news1{
+box-shadow:none;
+	color: #fff;
+	text-shadow: none;
+	background-color: #131313;
+	border-color:#131313;
+	border-radius: 0px;
+	text-transform:uppercase;
+	font-family: "OpenSans-Regular";
+	font-size:14px;
+	padding:7px 10px;
+	display:inline-block;
+}
+#newsletter .fbtext{margin:20px 0px;font-size:15px;color:#fff;}
+#newsletter .fb-like{margin:20px 0px;margin-left:5px;}
+#newsletter .fbtext a{font-size:15px;color:#ff0000;}
+.envelope  a :hover {
+		transition-delay: 150ms;
+		-ms-transition-delay: 150ms;
+		-moz-transition-delay: 150ms;
+		-o-transition-delay: 150ms;
+		margin-top: -10px;
+}
+.envelope a{
+	position:absolute;
+	color:#000;
+	font-weight:bold;
+	font-size:32px;
+	
+}
+@keyframes out {
+	0% {top: 20px;}
+  25% {top: -10px;}
+  50% {top: -12px;}
+  75% {top: -20px;}
+}
+.envelope:hover a{
+		transition-delay: 150ms;
+		-ms-transition-delay: 150ms;
+		-moz-transition-delay: 150ms;
+		-o-transition-delay: 150ms;
+		
+		color:#229ac8;
+}
+.envelope{
+	background: #fff; 
+	margin-top:10px;
+	margin-bottom:10px;
+	height:55px;
+	cursor:pointer;
+	border-radius:5px;
+	padding-left:40px;
+	padding-top:17px;
+}
+/*newletter*/
+/****/
+.signup{}
+#myModal1 .modal-dialog{
+margin-top:10%;
+min-height:540px !important;
+width:55% !important;
+}
+#modal-sucess .row{margin-top:20px;}
+#modal-sucess a + a {margin-left:5px;}
+#modal-sucess a {margin-top:25px;} 
+.proclose button.close{
+margin-bottom:20px;
+position:absolute;
+right:0px;
+top:0px;
+color:#000;
+font-size:27px;
+opacity:1;
+}
+.close1 button.close{
+background:#229ac8 ;
+border:3px solid #000;
+border-radius:50%;
+width:30px;
+padding:0px 5px;
+position:absolute;
+right:-10px;
+top:-7px;
+}
+.close1 .close{
+color:#000;
+font-size:27px;
+opacity:1;
+}
+#signup{
+padding:60px 20px 20px;
+}
+#signup fieldset{border:1px solid #e5e5e5;}
+#signup .msg{text-align:center;margin-top:-5%;}
+#signup .msg .fa{font-size:50px;color:#229ac8;}
+#signup .text{text-align:center;padding:10px 30px;}
+#signup .text h2{font-size:55px;color:#000;text-transform:uppercase; }
+#signup .text h4{font-size:31px;color:#000;text-transform:uppercase;}
+#signup .email{width:93%;text-align:center;margin:0px 15px 30px;}
+#signup .meup{color:#fff;text-transform:uppercase;font-size:14px;}
+#signup .meup1{color:#fff;text-transform:uppercase;font-size:14px;}
+#signup .btn-default{background:#229ac8;border:#229ac8;text-shadow:none}
+#signup .btn{padding:13px 10px;margin-left:5px;border-radius:0px;}
+#signup .email input{border-radius:5px !important;padding:6px 14px !important;font-size:14px;}
+#signup  .form-control::-moz-placeholder {
+    color: #a9a9a9;
+    opacity: 1;
+	
+}
+.boxmodal{text-align:center;}
+#subscribe_result .error{color:#ff0000;font-size:20px;padding:5px;text-align:center;clear:both;}
+#subscribe_result {color:#080;font-size:14px;padding-top:5px;text-align:left;clear:both;}
+/**signup*/
+footer{border-top:none!important;margin-top:0px!important}
+
+@media(max-width: 478px) {		
+#myModal1 .modal-dialog{width:93%!important;}
+#signup{padding:10px!important;}
+#signup .email{margin-bottom:0px;}
+.input-group{display:block}
+#signup .email input{margin-bottom:10px;}
+.input-group-addon, .input-group-btn{vertical-align:left;width:auto}
+
+}
